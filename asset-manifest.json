@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Rashid-Store-Ecom-website/static/css/main.e6c13ad2.css",
+    "main.js": "/Rashid-Store-Ecom-website/static/js/main.99873910.js",
+    "static/js/787.34115356.chunk.js": "/Rashid-Store-Ecom-website/static/js/787.34115356.chunk.js",
+    "index.html": "/Rashid-Store-Ecom-website/index.html",
+    "main.e6c13ad2.css.map": "/Rashid-Store-Ecom-website/static/css/main.e6c13ad2.css.map",
+    "main.99873910.js.map": "/Rashid-Store-Ecom-website/static/js/main.99873910.js.map",
+    "787.34115356.chunk.js.map": "/Rashid-Store-Ecom-website/static/js/787.34115356.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.99873910.js"
+  ]
+}
