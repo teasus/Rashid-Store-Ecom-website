@@ -35,7 +35,7 @@ export const FilterContextProvider = ({ children }) => {
 
   // to set the list view
   const setListView = () => {
-    return dispatch({ type: "CLEAR_FILTERS" });
+    return dispatch({ type: "SET_LIST_VIEW" });
   };
 
 
