@@ -9,8 +9,8 @@ import { Button } from "../styles/Button";
 
 const Nav = () => {
   const [menuIcon, setMenuIcon] = useState();
-  const {total_item} = useCartContext() ;
-  const { loginWithRedirect,logout,isAuthenticated ,user} = useAuth0();
+  const { total_item } = useCartContext();
+  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   console.log(isAuthenticated);
 
   const Nav = styled.nav`
@@ -20,7 +20,6 @@ const Nav = () => {
       align-items: center;
 
       .navbar-link {
-
         &:link,
         &:visited {
           display: inline-block;
@@ -36,6 +35,13 @@ const Nav = () => {
           color: ${({ theme }) => theme.colors.helper};
         }
       }
+    }
+    .n1 {
+      background-color: rgb(98 84 243);
+      padding: 10px;
+    }
+    .n2 {
+      color: white;
     }
     .mobile-navbar-btn {
       display: none;
@@ -79,11 +85,9 @@ const Nav = () => {
     }
     @media (max-width: ${({ theme }) => theme.media.mobile}) {
       .mobile-navbar-btn {
-      
         display: inline-block;
         z-index: 9999;
         border: ${({ theme }) => theme.colors.black};
-
 
         .mobile-nav-icon {
           font-size: 4.2rem;
@@ -110,7 +114,7 @@ const Nav = () => {
         position: absolute;
         top: 0;
         left: 0;
-       
+
         display: flex;
         justify-content: center;
         align-items: center;
@@ -123,15 +127,13 @@ const Nav = () => {
       }
 
       .active .navbar-lists {
-
         visibility: visible;
         opacity: 1;
-        background-color : #FFFFFF ;
+        background-color: #ffffff;
         transform: translateX(0);
         z-index: 999;
         transform-origin: right;
         transition: all 3s linear;
-
 
         .navbar-link {
           font-size: 4.2rem;
@@ -160,71 +162,92 @@ const Nav = () => {
 
   return (
     <Nav>
-        <div className={menuIcon ? "navbar active" : "navbar" } >
-            <ul className="navbar-lists">
-                
-                <li>
-                    <NavLink to="/" className="navbar-link home-link" 
-                    onClick={() => setMenuIcon(false)}
-                    >
-                        Home
-                
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/about" className="navbar-link " 
-                    onClick={() => setMenuIcon(false)}>
-                        About
-                        
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/products" className="navbar-link " onClick={() => setMenuIcon(false)}>
-                        Products
-                  
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/contact" className="navbar-link"  onClick={() => setMenuIcon(false)}>
-                        Contact
-                    </NavLink>
-                </li>
-                {isAuthenticated && <p> {user.name}</p>}
-                {!isAuthenticated ?
-                <li>
-                  <Button  onClick={() => loginWithRedirect()}>
-                    Log In </Button>
-                    </li> :
-                    <li>
-                  <Button onClick={() => logout({ returnTo: window.location.origin })}>
-                    Log Out</Button> 
-                      </li>
-                 }
-              
-                
-                <li>
-                    <NavLink to="/cart" className="navbar-link cart-trolley--link">
-                        <FiShoppingCart className="cart-trolley"/>
-                        <span className="cart-total--item"> {total_item ? total_item :0 } </span>
-                    </NavLink>
-
-                </li>
-
-            </ul>
-            {/*two buttons for ope and close of menu  */}
-            <div className ="mobile-navbar-btn">
-                <CgMenu  name = "menu-outline"  className="mobile-nav-icon" 
-                onClick={() => {
-                  console.log(menuIcon) ;
-                  setMenuIcon(true) } } 
-                />
-                <CgClose  name = "close-outline"  className="mobile-nav-icon close-outline" 
-                onClick={() => setMenuIcon(false)}  />
+      <div className={menuIcon ? "navbar active" : "navbar"}>
+        <ul className="navbar-lists">
+          <li>
+            <NavLink
+              to="/"
+              className="navbar-link home-link"
+              onClick={() => setMenuIcon(false)}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/about"
+              className="navbar-link "
+              onClick={() => setMenuIcon(false)}
+            >
+              About
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/products"
+              className="navbar-link "
+              onClick={() => setMenuIcon(false)}
+            >
+              Products
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/contact"
+              className="navbar-link"
+              onClick={() => setMenuIcon(false)}
+            >
+              Contact
+            </NavLink>
+          </li>
+          {isAuthenticated && (
+            <div className="n1">
+              {" "}
+              <h3 className="n2"> Hi, {user.given_name}</h3>{" "}
             </div>
+          )}
+          {!isAuthenticated ? (
+            <li>
+              <Button onClick={() => loginWithRedirect()}>Log In </Button>
+            </li>
+          ) : (
+            <li>
+              <Button
+                onClick={() => logout({ returnTo: window.location.origin })}
+              >
+                Log Out
+              </Button>
+            </li>
+          )}
 
+          <li>
+            <NavLink to="/cart" className="navbar-link cart-trolley--link">
+              <FiShoppingCart className="cart-trolley" />
+              <span className="cart-total--item">
+                {" "}
+                {total_item ? total_item : 0}{" "}
+              </span>
+            </NavLink>
+          </li>
+        </ul>
+        {/*two buttons for ope and close of menu  */}
+        <div className="mobile-navbar-btn">
+          <CgMenu
+            name="menu-outline"
+            className="mobile-nav-icon"
+            onClick={() => {
+              console.log(menuIcon);
+              setMenuIcon(true);
+            }}
+          />
+          <CgClose
+            name="close-outline"
+            className="mobile-nav-icon close-outline"
+            onClick={() => setMenuIcon(false)}
+          />
         </div>
-
+      </div>
     </Nav>
-  )
-  }
-export default Nav
+  );
+};
+export default Nav;

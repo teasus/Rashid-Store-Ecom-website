@@ -1,20 +1,22 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
-import Nav from './Nav';
-
+import React from "react";
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+import Nav from "./Nav";
 
 const Header = () => {
   return (
     <MainHeader>
-        <NavLink to="/">
-            <img src = "./images/Logo.png" alt ="LOGO" className='logo'  />
-        </NavLink>
-        <Nav/>
-
+      <NavLink to="/">
+        <img
+          src={process.env.PUBLIC_URL + "/images/Logo.png"}
+          alt="LOGO"
+          className="logo"
+        />
+      </NavLink>
+      <Nav />
     </MainHeader>
-  )
-}
+  );
+};
 const MainHeader = styled.header`
   padding: 0 4.8rem;
   height: 10rem;
@@ -28,4 +30,4 @@ const MainHeader = styled.header`
   }
 `;
 
-export default Header
+export default Header;
